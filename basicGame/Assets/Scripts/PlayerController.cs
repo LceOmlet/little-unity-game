@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
    */
   public void Damage()
   {
-   // health -= 1;
+   health -= 1;
 
     if(health < 1)
     {

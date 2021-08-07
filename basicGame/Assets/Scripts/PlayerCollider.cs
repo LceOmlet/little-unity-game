@@ -6,6 +6,9 @@
 public class PlayerCollider : MonoBehaviour
 {
   public GameObject section;
+
+
+
   private void Update(){
     if(transform.position.x < -15.0f)
       Destroy(gameObject);

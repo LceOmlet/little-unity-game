@@ -10,6 +10,7 @@ public class MenuController : MonoBehaviour
    */
   public void OnStartClicked()
   {
+        GameObject.Find("Score").GetComponent<ScoreData>().setScore(0f);
     Application.LoadLevel("Game");
   }
 

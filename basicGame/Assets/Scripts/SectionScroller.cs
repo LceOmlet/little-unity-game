@@ -11,10 +11,16 @@ public class SectionScroller : MonoBehaviour
   public float speed = 10.0f;
   private float far = 10.0f;
   private float limit = 100.0f;
+    private float frac = 1f;
+private ScoreData scoreData;
   /*
    * Use the Transform component attached to the section game object and
    * translate it based on delta time.
    */
+  private void Start()
+    {
+        scoreData = GameObject.Find("Score").GetComponent<ScoreData>();
+    }
   private void Update()
   {
     if(limit - far > 25.0f){
@@ -42,5 +48,9 @@ public class SectionScroller : MonoBehaviour
       far += put;
     }
     far -= speed * Time.deltaTime;
+    frac += 1f * Time.deltaTime;
+    speed += Time.deltaTime / frac;
+    scoreData.setScore(scoreData.getScore() + speed * Time.deltaTime);
+        Debug.Log(scoreData.getScore());
   }
 }
