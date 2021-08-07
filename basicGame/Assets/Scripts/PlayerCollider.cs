@@ -5,6 +5,14 @@
  */
 public class PlayerCollider : MonoBehaviour
 {
+  public GameObject section;
+  private void Update(){
+    if(transform.position.x < -15.0f)
+      Destroy(gameObject);
+    float speed = section.GetComponent<SectionScroller>().speed;
+    transform.Translate(new Vector2(-speed, 0) * Time.deltaTime);
+  }
+
   /*
    * A trigger callback to detect when the player's collider has
    * entered the obstacle's. Then simply obtain the PlayerController

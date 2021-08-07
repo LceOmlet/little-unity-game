@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
   private Rigidbody2D rigidbody2d;
   private int health;
   private bool canJump;
-    public AudioSource m_bound;
+    public AudioSource audioSource;
 
   /*
    * Apply initial health and also store the Rigidbody2D reference for
@@ -19,8 +19,8 @@ public class PlayerController : MonoBehaviour
   {
     health = 6;
     rigidbody2d = GetComponent<Rigidbody2D>();
-        m_bound = this.gameObject.GetComponent<AudioSource>();
-    }
+        audioSource = GetComponent<AudioSource>();
+  }
 
   /*
    * Remove one health unit from player and if health becomes 0, change
@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
    */
   public void Damage()
   {
-    health -= 1;
+   // health -= 1;
 
     if(health < 1)
     {
@@ -56,10 +56,10 @@ public class PlayerController : MonoBehaviour
     {
       if(canJump == true)
       {
+                audioSource.Play();
         rigidbody2d.AddForce(new Vector2(0, 500));
         canJump = false;
       }
-            m_bound.Play();
     }
   }
 
